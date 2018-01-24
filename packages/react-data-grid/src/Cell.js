@@ -491,7 +491,8 @@ class Cell extends React.Component {
       props.dependentValues = this.getFormatterDependencies();
       CellContent = React.cloneElement(Formatter, props);
     } else if (isFunction(Formatter)) {
-      CellContent = <Formatter value={this.props.value} dependentValues={this.getFormatterDependencies()} />;
+      let focus = this.isSelected();
+      CellContent = <Formatter value={this.props.value} focus={focus} dependentValues={this.getFormatterDependencies()} />;
     } else {
       CellContent = <SimpleCellFormatter value={this.props.value} />;
     }
